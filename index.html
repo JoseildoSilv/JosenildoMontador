@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Josenildo montagens em geral - Montagem e Fretes</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">Josenildo Montagens Em Geral</div>
+      <div class="nav-links">
+        <a href="#servicos">Serviços</a>
+        <a href="#orcamento">Orçamento</a>
+        <a href="#contato">Contato</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section id="servicos" class="services-section">
+      <h2>Nossos Serviços</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <i class="fas fa-couch"></i>
+          <h3>Montagem de Móveis</h3>
+          <p>Montagem profissional de móveis com qualidade e rapidez</p>
+        </div>
+        <div class="service-card">
+          <i class="fas fa-truck"></i>
+          <h3>Pequenos Fretes</h3>
+          <p>Transporte seguro para seus móveis e objetos</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="orcamento" class="quote-section">
+      <h2>Solicite um Orçamento</h2>
+      <form id="quoteForm" class="quote-form">
+        <div class="form-group">
+          <label for="name">Nome:</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">Telefone:</label>
+          <input type="tel" id="phone" name="phone" required>
+        </div>
+        <div class="form-group">
+          <label for="service">Tipo de Serviço:</label>
+          <select id="service" name="service" required>
+            <option value="">Selecione um serviço</option>
+            <option value="montagem">Montagem de Móveis</option>
+            <option value="frete">Pequenos Fretes</option>
+            <option value="combinado">Montagem + Frete</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="description">Descrição do Serviço:</label>
+          <textarea id="description" name="description" required></textarea>
+        </div>
+        
+        <div class="form-group">
+          <label for="details">Endereço:</label>
+          <textarea id="details" name="details"></textarea>
+        </div>
+        <button type="submit">Enviar Orçamento</button>
+      </form>
+    </section>
+
+    <section id="contato" class="contact-section">
+      <h2>Contato Rápido</h2>
+      <div class="contact-grid">
+        <a href="https://wa.me/5582998092831" class="contact-card whatsapp">
+          <i class="fab fa-whatsapp"></i>
+          <span>WhatsApp</span>
+        </a>
+        <a href="tel:+5582998092831" class="contact-card phone">
+          <i class="fas fa-phone"></i>
+          <span>Telefone</span>
+        </a>
+        <a href="mailto:colocar email.com" class="contact-card email">
+          <i class="fas fa-envelope"></i>
+          <span>E-mail</span>
+        </a>
+        <a href="https://www.instagram.com/moveismczal" class="contact-card instagram" target="_blank">
+          <i class="fab fa-instagram"></i>
+          <span>Instagram</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Josenildo montagens em geral - Todos os direitos reservados</p>
+  </footer>
+
+  <script>
+    const quoteForm = document.getElementById('quoteForm');
+
+    quoteForm.addEventListener('submit', function(event) {
+      event.preventDefault(); // Evita o envio padrão do formulário
+
+      const name = document.getElementById('name').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const service = document.getElementById('service').value;
+      const description = document.getElementById('description').value.trim();
+      const details = document.getElementById('details').value.trim();
+
+      // Monta a mensagem para o WhatsApp
+      const message = `Olá, me chamo ${name}. Gostaria de um orçamento para o serviço: ${service}.%0A
+Descrição: ${description}%0A
+Endereço: ${details}%0A
+Meu telefone para contato: ${phone}`;
+
+      // Redireciona para WhatsApp
+      const whatsappUrl = `https://wa.me/5582998092831?text=${message}`;
+      window.open(whatsappUrl, '_blank');
+    });
+  </script>
+</body>
+</html>
