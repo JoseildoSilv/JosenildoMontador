@@ -55,18 +55,25 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   
     // Manipula o envio do formulário
-    quoteForm.addEventListener('submit', async function(e) {
-      e.preventDefault();
-  
-      const formData = new FormData(quoteForm);
-      const whatsappMessage = prepareWhatsAppMessage(formData);
-      
-      try {
-        const whatsappNumber = '5582998092831'; // Substitua pelo número correto
-        window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, '_blank');
-        
-        showNotification('Orçamento enviado com sucesso!', 'success');
-        quoteForm.reset();
+    quoteForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const formData = new FormData(quoteForm);
+    const whatsappMessage = prepareWhatsAppMessage(formData);
+
+    const whatsappNumber = '5582998092831';
+    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+    
+    // Testando com alert
+    alert("A URL do WhatsApp é: " + whatsappURL);
+
+    // Tente abrir o link após alert
+    window.open(whatsappURL, '_blank');
+
+    showNotification('Orçamento enviado com sucesso!', 'success');
+    quoteForm.reset();
+});
+
       } catch (error) {
         showNotification('Erro ao enviar orçamento. Tente novamente.', 'error');
       }
